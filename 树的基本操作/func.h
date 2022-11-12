@@ -7,31 +7,33 @@ typedef struct TreeNode {
 
 }TreeNode;
 
-TreeNode* CreateLink();//´´½¨
+TreeNode* CreateLink();//åˆ›å»º
 
-//Ç°Ğò·Çµİ¹éÊä³ö£º·µ»ØÊı×é
+//å‰åºéé€’å½’è¾“å‡ºï¼šè¿”å›æ•°ç»„
 int* preorderTraversal(struct TreeNode* root, int* returnSize);
-//Ç°Ğòµİ¹é
+//å‰åºé€’å½’
 void inorder_1(struct TreeNode* root, int* res, int* returnSize);
-//Ç°Ğòµİ¹é
+//å‰åºé€’å½’
 int* preorderTraversal_1(struct TreeNode* root, int* returnSize); 
 
-//ÖĞĞò·Çµİ¹éÊä³ö£º·µ»ØÊı×é
+//ä¸­åºéé€’å½’è¾“å‡ºï¼šè¿”å›æ•°ç»„
 int* inorderTraversal(struct TreeNode* root, int* returnSize);
-//ÖĞĞòµİ¹é
+//ä¸­åºé€’å½’
 void inorder_2(struct TreeNode* root, int* res, int* resSize); 
-//ÖĞĞòµİ¹é
+//ä¸­åºé€’å½’
 int* inorderTraversal_1(struct TreeNode* root, int* returnSize); 
 
-//ºóĞò·Çµİ¹éÊä³ö£º·µ»ØÊı×é
+//ååºéé€’å½’è¾“å‡ºï¼šè¿”å›æ•°ç»„
 int* postorderTraversal(struct TreeNode* root, int* returnSize); 
-//ºóĞòµİ¹é
+//ååºé€’å½’
 void inorder_3(struct TreeNode* root, int* res, int* returnSize); 
-//ºóĞòµİ¹é
+//ååºé€’å½’
 int* postorderTraversal_1(struct TreeNode* root, int* returnSize);
 
-//²ãĞò·Çµİ¹é
+//å±‚åºéé€’å½’
 int* layerorderTraversal(struct TreeNode* root, int* returnSize);
-//Ç°ÖĞĞò±éÀú½á¹ûÊä³ö¶ş²æÊ÷
+//å‰ä¸­åºéå†ç»“æœè¾“å‡ºäºŒå‰æ ‘
 struct TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int inorderSize);
-void shuchu(struct TreeNode* S);
+
+void Output(struct TreeNode* S);
+void Printarray(int* nums, int numsSize);
