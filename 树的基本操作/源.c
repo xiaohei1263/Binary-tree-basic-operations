@@ -5,73 +5,58 @@
 #include<math.h>
 #include<stdio.h>
 #include<stdlib.h>
-#include"Tou.h"
-/*2£®±à³ÌÊµÏÖÈçÏÂÒªÇó£º
-£¨1£©¸ù¾İÏÈĞò±éÀúĞòÁĞÒÔµİ¹é·½Ê½´´½¨¶ş²æÊ÷£»£¨2£©²ÉÓÃµİ¹éºÍ·Çµİ¹é·½Ê½½øĞĞ¶ş²æÊ÷µÄÏÈĞò¡¢ÖĞĞòºÍºóĞò±éÀú£»
-£¨3£©²ÉÓÃ·Çµİ¹é·½Ê½ÊµÏÖ¶ş²æÊ÷µÄ²ãĞò±éÀú£»  £¨4£©×îºó±àĞ´Ö÷º¯Êıµ÷ÓÃÕâĞ©º¯ÊıÑéÖ¤Ëù±àĞ´º¯ÊıµÄÕıÈ·ĞÔ¡£
+#include"func.h"
+/*2ï¼ç¼–ç¨‹å®ç°å¦‚ä¸‹è¦æ±‚ï¼š
+ï¼ˆ1ï¼‰æ ¹æ®å…ˆåºéå†åºåˆ—ä»¥é€’å½’æ–¹å¼åˆ›å»ºäºŒå‰æ ‘ï¼›ï¼ˆ2ï¼‰é‡‡ç”¨é€’å½’å’Œéé€’å½’æ–¹å¼è¿›è¡ŒäºŒå‰æ ‘çš„å…ˆåºã€ä¸­åºå’Œååºéå†ï¼›
+ï¼ˆ3ï¼‰é‡‡ç”¨éé€’å½’æ–¹å¼å®ç°äºŒå‰æ ‘çš„å±‚åºéå†ï¼›  ï¼ˆ4ï¼‰æœ€åç¼–å†™ä¸»å‡½æ•°è°ƒç”¨è¿™äº›å‡½æ•°éªŒè¯æ‰€ç¼–å†™å‡½æ•°çš„æ­£ç¡®æ€§ã€‚
 */
 
 int main(){
 	TreeNode* S;
-	printf("ÇëÊäÈëµÚÒ»¸ö½ÚµãµÄÊı¾İ:\n");
-	//²âÊÔÊı¾İ1 2 4 -1 7 -1 -1 -1 3 5 -1 -1 6 8 -1 -1 -1
+	printf("è¯·è¾“å…¥ç¬¬ä¸€ä¸ªèŠ‚ç‚¹çš„æ•°æ®:\n");
+	//æµ‹è¯•æ•°æ®1 2 4 -1 7 -1 -1 -1 3 5 -1 -1 6 8 -1 -1 -1
 	S = CreateLink();
 	printf("\n");
-	shuchu(S);
+	Output(S);
 	
 	return 0;
 }
 
-void shuchu(struct TreeNode* S) {
-	int n;
+void Output(struct TreeNode* S) {
+	int n = 0;
 	int* array = (int*)malloc(sizeof(int) * 100);
 
-	array = preorderTraversal_1(S, &n);
-	printf("Ç°Ğòµİ¹éÊä³ö");
-	for (int i = 0; i < n; ++i) {
-		printf("%2d", array[i]);
-	}
+	printf("å‰åºé€’å½’è¾“å‡º");
+	Printarray(preorderTraversal_1(S, &n), n);
 	printf("\n");
 
-	printf("Ç°·Çµİ¹éÊä³ö");
-	array = preorderTraversal(S, &n);
-	for (int i = 0; i < n; ++i) {
-		printf("%2d", array[i]);
-	}
+	printf("å‰éé€’å½’è¾“å‡º");
+	Printarray(preorderTraversal(S, &n), n);
 	printf("\n");
 
-	printf("ÖĞĞòµİ¹éÊä³ö");
-	array = inorderTraversal_1(S, &n);
-	for (int i = 0; i < n; ++i) {
-		printf("%2d", array[i]);
-	}
+	printf("ä¸­åºé€’å½’è¾“å‡º");
+	Printarray(inorderTraversal_1(S, &n), n);
 	printf("\n");
 
-	printf("ÖĞ·Çµİ¹éÊä³ö");
-	array = inorderTraversal(S, &n);
-	for (int i = 0; i < n; ++i) {
-		printf("%2d", array[i]);
-	}
-
-	printf("\n");
-	printf("ºóĞòµİ¹éÊä³ö");
-	array = postorderTraversal_1(S, &n);
-	for (int i = 0; i < n; ++i) {
-		printf("%2d", array[i]);
-	}
+	printf("ä¸­éé€’å½’è¾“å‡º");
+	Printarray(inorderTraversal(S, &n), n);
 	printf("\n");
 
-	printf("ºó·Çµİ¹éÊä³ö");
-	array = postorderTraversal(S, &n);
-	for (int i = 0; i < n; ++i) {
-		printf("%2d", array[i]);
-	}
-
+	printf("ååºé€’å½’è¾“å‡º");
+	Printarray(postorderTraversal_1(S, &n),n);
 	printf("\n");
-	printf("·Çµİ¹é²ãÊä³ö");
-	array = layerorderTraversal(S, &n);
-	for (int i = 0; i < n; ++i) {
-		printf("%2d", array[i]);
+
+	printf("åéé€’å½’è¾“å‡º");
+	Printarray(postorderTraversal(S, &n), n);
+	printf("\n");
+
+	printf("éé€’å½’å±‚è¾“å‡º");
+	Printarray(layerorderTraversal(S, &n), n);
+}
+
+void Printarray(int* nums, int numsSize) {
+	for (int i = 0; i < numsSize; ++i) {
+		printf("%2d", nums[i]);
 	}
 }
 
@@ -86,9 +71,9 @@ TreeNode* CreateLink(){
 	else {
 		T = (TreeNode*)malloc(sizeof(TreeNode));
 		T->val = val;
-		printf("ÇëÊäÈë%dµÄ×ó×ÓÊ÷: ", val);
+		printf("è¯·è¾“å…¥%dçš„å·¦å­æ ‘: ", val);
 		T->left = CreateLink();
-		printf("ÇëÊäÈë%dµÄÓÒ×ÓÊ÷: ", val);
+		printf("è¯·è¾“å…¥%dçš„å³å­æ ‘: ", val);
 		T->right = CreateLink();
 		return T;
 	}
@@ -101,7 +86,7 @@ void inorder_1(struct TreeNode* root, int* res, int* returnSize) {
 	inorder_1(root->left, res, returnSize);
 	inorder_1(root->right, res, returnSize);
 }
-int* preorderTraversal_1(struct TreeNode* root, int* returnSize) {//Ç°Ğòµİ¹éÊä³ö
+int* preorderTraversal_1(struct TreeNode* root, int* returnSize) {//å‰åºé€’å½’è¾“å‡º
 	*returnSize = 0;
 	int* res = (int*)malloc(sizeof(int) * 100);
 	inorder_1(root, res, returnSize);
@@ -116,14 +101,14 @@ void inorder_2(struct TreeNode* root, int* res, int* resSize) {
 	res[(*resSize)++] = root->val;
 	inorder_2(root->right, res, resSize);
 }
-int* inorderTraversal_1(struct TreeNode* root, int* returnSize) {//ÖĞĞòµİ¹éÊä³ö
+int* inorderTraversal_1(struct TreeNode* root, int* returnSize) {//ä¸­åºé€’å½’è¾“å‡º
 	int* res = (int*)malloc(sizeof(int) * 501);
 	*returnSize = 0;
 	inorder_2(root, res, returnSize);
 	return res;
 }
 
-void inorder_3(struct TreeNode* root, int* res, int* returnSize) {//ºóĞòµİ¹é
+void inorder_3(struct TreeNode* root, int* res, int* returnSize) {//ååºé€’å½’
 	if (!root)
 		return;
 	inorder_3(root->left, res, returnSize);
@@ -137,7 +122,7 @@ int* postorderTraversal_1(struct TreeNode* root, int* returnSize) {
 	return res;
 }
 
-int* preorderTraversal(struct TreeNode* root, int* returnSize) {//Ç°Ğò·Çµİ¹éÊä³ö
+int* preorderTraversal(struct TreeNode* root, int* returnSize) {//å‰åºéé€’å½’è¾“å‡º
 	*returnSize = 0;
 	int* res = (int*)malloc(sizeof(int) * 501);
 	struct TreeNode** stk = (TreeNode**)malloc(sizeof(int) * 501);
@@ -155,10 +140,10 @@ int* preorderTraversal(struct TreeNode* root, int* returnSize) {//Ç°Ğò·Çµİ¹éÊä³ö
 	return res;
 }
 
-int* inorderTraversal(struct TreeNode* root, int* returnSize) {//ÖĞĞò·Çµİ¹éÊä³ö
+int* inorderTraversal(struct TreeNode* root, int* returnSize) {//ä¸­åºéé€’å½’è¾“å‡º
 	*returnSize = 0;
 	int size = 0;
-	int* res = (int*)malloc(sizeof(int) * 501);//Êä³öÊı×é
+	int* res = (int*)malloc(sizeof(int) * 501);//è¾“å‡ºæ•°ç»„
 	struct TreeNode** stk = (TreeNode**)malloc(sizeof(struct TreeNode*) * 501);
 	struct TreeNode* node = root;
 	int top = 0;
@@ -175,7 +160,7 @@ int* inorderTraversal(struct TreeNode* root, int* returnSize) {//ÖĞĞò·Çµİ¹éÊä³ö
 	return res;
 }
 
-int *postorderTraversal(struct TreeNode *root, int *returnSize) {//ºóĞò·Çµİ¹éÊä³ö
+int *postorderTraversal(struct TreeNode *root, int *returnSize) {//ååºéé€’å½’è¾“å‡º
     int *res = (int*)malloc(sizeof(int) * 2001);
     *returnSize = 0;
     if (root == NULL) {
@@ -202,7 +187,7 @@ int *postorderTraversal(struct TreeNode *root, int *returnSize) {//ºóĞò·Çµİ¹éÊä³
     return res;
 }
 
-struct TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int inorderSize) {//Ç°ÖĞĞò±éÀú½á¹ûÊä³ö¶ş²æÊ÷
+struct TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int inorderSize) {//å‰ä¸­åºéå†ç»“æœè¾“å‡ºäºŒå‰æ ‘
 	if (preorderSize == 0 || inorderSize == 0)
 		return NULL;
 	struct TreeNode* root = (struct TreeNode*)malloc(sizeof(struct TreeNode));
@@ -236,4 +221,3 @@ int* layerorderTraversal(struct TreeNode* root, int* returnSize) {
 	}
 	return res;
 }
-
