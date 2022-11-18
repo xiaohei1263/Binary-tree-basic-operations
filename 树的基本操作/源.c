@@ -6,15 +6,24 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include"func.h"
-/*2ï¼Žç¼–ç¨‹å®žçŽ°å¦‚ä¸‹è¦æ±‚ï¼š
-ï¼ˆ1ï¼‰æ ¹æ®å…ˆåºéåŽ†åºåˆ—ä»¥é€’å½’æ–¹å¼åˆ›å»ºäºŒå‰æ ‘ï¼›ï¼ˆ2ï¼‰é‡‡ç”¨é€’å½’å’Œéžé€’å½’æ–¹å¼è¿›è¡ŒäºŒå‰æ ‘çš„å…ˆåºã€ä¸­åºå’ŒåŽåºéåŽ†ï¼›
-ï¼ˆ3ï¼‰é‡‡ç”¨éžé€’å½’æ–¹å¼å®žçŽ°äºŒå‰æ ‘çš„å±‚åºéåŽ†ï¼›  ï¼ˆ4ï¼‰æœ€åŽç¼–å†™ä¸»å‡½æ•°è°ƒç”¨è¿™äº›å‡½æ•°éªŒè¯æ‰€ç¼–å†™å‡½æ•°çš„æ­£ç¡®æ€§ã€‚
+/*¶¨Òå³ö¶þ²æÊ÷µÄÎïÀí½á¹¹£»´´½¨¶þ²æÊ÷£»Ïú»Ù¶þ²æÊ÷£»
+  ¶þ²æÊ÷µÄÏÈÐò±éÀú£»¶þ²æÊ÷µÄÖÐÐò±éÀú£»¶þ²æÊ÷µÄºóÐò±éÀú£»¶þ²æÊ÷µÄ²ãÐò±éÀú£»
+
+  ´ÓÒÔÏÂ¼¸¸öÌâÄ¿Ñ¡ÔñÒ»¸ö²¢±à³ÌÊµÏÖ£º
+  1. ÈçºÎÇó¶þ²æÊ÷TµÄ·ÇÒ¶×Ó½áµã¸öÊý
+  2. ÈçºÎ´òÓ¡Êä³ö¶þ²æÊ÷µÚ4²ã½áµã(¼ÙÉèÊ÷¸ùÎªµÚ1²ã)
+  3. Çó¶þ²æÊ÷ÖÐ¶ÈÎª2µÄ½áµãµÄ¸öÊý
+  4. Çó¶þ²æÊ÷ÖÐ½áµã×ÜÊý
+  5. Çó¶þ²æÊ÷ÖÐÒ¶×Ó½áµã×ÜÊý
+  6. ±éÀú¶þ²æÊ÷Ê±ÏÔÊ¾Ã¿¸ö½áµãµÄ²ãºÅ
+  7. Çó¶þ²æÊ÷µÄÉî¶È¡£
+  ×îºó±àÐ´Ö÷º¯Êýµ÷ÓÃÕâÐ©º¯ÊýÑéÖ¤Ëù±àÐ´º¯ÊýµÄÕýÈ·ÐÔ¡£
 */
 
 int main(){
 	TreeNode* S;
-	printf("è¯·è¾“å…¥ç¬¬ä¸€ä¸ªèŠ‚ç‚¹çš„æ•°æ®:\n");
-	//æµ‹è¯•æ•°æ®1 2 4 -1 7 -1 -1 -1 3 5 -1 -1 6 8 -1 -1 -1
+	printf("ÇëÊäÈëµÚÒ»¸ö½ÚµãµÄÊý¾Ý:\n");
+	//²âÊÔÊý¾Ý1 2 4 -1 7 -1 -1 -1 3 5 -1 -1 6 8 -1 -1 -1
 	S = CreateLink();
 	printf("\n");
 	Output(S);
@@ -26,32 +35,55 @@ void Output(struct TreeNode* S) {
 	int n = 0;
 	int* array = (int*)malloc(sizeof(int) * 100);
 
-	printf("å‰åºé€’å½’è¾“å‡º");
+	printf("Ç°ÐòµÝ¹éÊä³ö");
 	Printarray(preorderTraversal_1(S, &n), n);
 	printf("\n");
 
-	printf("å‰éžé€’å½’è¾“å‡º");
+	printf("Ç°·ÇµÝ¹éÊä³ö");
 	Printarray(preorderTraversal(S, &n), n);
 	printf("\n");
 
-	printf("ä¸­åºé€’å½’è¾“å‡º");
+	printf("ÖÐÐòµÝ¹éÊä³ö");
 	Printarray(inorderTraversal_1(S, &n), n);
 	printf("\n");
 
-	printf("ä¸­éžé€’å½’è¾“å‡º");
+	printf("ÖÐ·ÇµÝ¹éÊä³ö");
 	Printarray(inorderTraversal(S, &n), n);
 	printf("\n");
 
-	printf("åŽåºé€’å½’è¾“å‡º");
+	printf("ºóÐòµÝ¹éÊä³ö");
 	Printarray(postorderTraversal_1(S, &n),n);
 	printf("\n");
 
-	printf("åŽéžé€’å½’è¾“å‡º");
+	printf("ºó·ÇµÝ¹éÊä³ö");
 	Printarray(postorderTraversal(S, &n), n);
 	printf("\n");
 
-	printf("éžé€’å½’å±‚è¾“å‡º");
+	printf("·ÇµÝ¹é²ãÊä³ö");
 	Printarray(layerorderTraversal(S, &n), n);
+	printf("\n");
+
+	printf("·ÇÒ¶×Ó½Úµã¸öÊýÎª%d", leafTreeNodesum(S));
+	printf("\n");
+
+	printf("²ãÐòÊä³öµÚ4²ãÔªËØ");
+	Printarray(PTreeNodeLevel(S, 4, &n), n);
+	printf("\n");
+
+	printf("ÖÐ¶ÈÎª2µÄ½Úµã¸öÊýÎª%d", Tree_three(S));
+	printf("\n");
+
+	printf("¶þ²æÊ÷µÄ½Úµã¸öÊýÎª%d", TreeNodesum(S));
+	printf("\n");
+
+	printf("Ò¶×Ó½ÚµãµÄ¸öÊýÎª%d", LTsum(S));
+	printf("\n");
+
+	printf("²ãÐò±éÀú´ø²ãÊýºÅ");
+	Tree_six(S);
+
+	printf("¶þ²æÊ÷µÄÉî¶ÈÎª%d", deepTree(S));
+	printf("\n");
 }
 
 void Printarray(int* nums, int numsSize) {
@@ -71,9 +103,9 @@ TreeNode* CreateLink(){
 	else {
 		T = (TreeNode*)malloc(sizeof(TreeNode));
 		T->val = val;
-		printf("è¯·è¾“å…¥%dçš„å·¦å­æ ‘: ", val);
+		printf("ÇëÊäÈë%dµÄ×ó×ÓÊ÷: ", val);
 		T->left = CreateLink();
-		printf("è¯·è¾“å…¥%dçš„å³å­æ ‘: ", val);
+		printf("ÇëÊäÈë%dµÄÓÒ×ÓÊ÷: ", val);
 		T->right = CreateLink();
 		return T;
 	}
@@ -86,7 +118,7 @@ void inorder_1(struct TreeNode* root, int* res, int* returnSize) {
 	inorder_1(root->left, res, returnSize);
 	inorder_1(root->right, res, returnSize);
 }
-int* preorderTraversal_1(struct TreeNode* root, int* returnSize) {//å‰åºé€’å½’è¾“å‡º
+int* preorderTraversal_1(struct TreeNode* root, int* returnSize) {//Ç°ÐòµÝ¹éÊä³ö
 	*returnSize = 0;
 	int* res = (int*)malloc(sizeof(int) * 100);
 	inorder_1(root, res, returnSize);
@@ -101,14 +133,14 @@ void inorder_2(struct TreeNode* root, int* res, int* resSize) {
 	res[(*resSize)++] = root->val;
 	inorder_2(root->right, res, resSize);
 }
-int* inorderTraversal_1(struct TreeNode* root, int* returnSize) {//ä¸­åºé€’å½’è¾“å‡º
+int* inorderTraversal_1(struct TreeNode* root, int* returnSize) {//ÖÐÐòµÝ¹éÊä³ö
 	int* res = (int*)malloc(sizeof(int) * 501);
 	*returnSize = 0;
 	inorder_2(root, res, returnSize);
 	return res;
 }
 
-void inorder_3(struct TreeNode* root, int* res, int* returnSize) {//åŽåºé€’å½’
+void inorder_3(struct TreeNode* root, int* res, int* returnSize) {//ºóÐòµÝ¹é
 	if (!root)
 		return;
 	inorder_3(root->left, res, returnSize);
@@ -122,7 +154,7 @@ int* postorderTraversal_1(struct TreeNode* root, int* returnSize) {
 	return res;
 }
 
-int* preorderTraversal(struct TreeNode* root, int* returnSize) {//å‰åºéžé€’å½’è¾“å‡º
+int* preorderTraversal(struct TreeNode* root, int* returnSize) {//Ç°Ðò·ÇµÝ¹éÊä³ö
 	*returnSize = 0;
 	int* res = (int*)malloc(sizeof(int) * 501);
 	struct TreeNode** stk = (TreeNode**)malloc(sizeof(int) * 501);
@@ -140,10 +172,10 @@ int* preorderTraversal(struct TreeNode* root, int* returnSize) {//å‰åºéžé€’å½
 	return res;
 }
 
-int* inorderTraversal(struct TreeNode* root, int* returnSize) {//ä¸­åºéžé€’å½’è¾“å‡º
+int* inorderTraversal(struct TreeNode* root, int* returnSize) {//ÖÐÐò·ÇµÝ¹éÊä³ö
 	*returnSize = 0;
 	int size = 0;
-	int* res = (int*)malloc(sizeof(int) * 501);//è¾“å‡ºæ•°ç»„
+	int* res = (int*)malloc(sizeof(int) * 501);//Êä³öÊý×é
 	struct TreeNode** stk = (TreeNode**)malloc(sizeof(struct TreeNode*) * 501);
 	struct TreeNode* node = root;
 	int top = 0;
@@ -160,7 +192,7 @@ int* inorderTraversal(struct TreeNode* root, int* returnSize) {//ä¸­åºéžé€’å½’
 	return res;
 }
 
-int *postorderTraversal(struct TreeNode *root, int *returnSize) {//åŽåºéžé€’å½’è¾“å‡º
+int *postorderTraversal(struct TreeNode *root, int *returnSize) {//ºóÐò·ÇµÝ¹éÊä³ö
     int *res = (int*)malloc(sizeof(int) * 2001);
     *returnSize = 0;
     if (root == NULL) {
@@ -187,7 +219,7 @@ int *postorderTraversal(struct TreeNode *root, int *returnSize) {//åŽåºéžé€’å
     return res;
 }
 
-struct TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int inorderSize) {//å‰ä¸­åºéåŽ†ç»“æžœè¾“å‡ºäºŒå‰æ ‘
+struct TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int inorderSize) {//Ç°ÖÐÐò±éÀú½á¹ûÊä³ö¶þ²æÊ÷
 	if (preorderSize == 0 || inorderSize == 0)
 		return NULL;
 	struct TreeNode* root = (struct TreeNode*)malloc(sizeof(struct TreeNode));
@@ -220,4 +252,76 @@ int* layerorderTraversal(struct TreeNode* root, int* returnSize) {
 		}
 	}
 	return res;
+}
+
+
+int leafTreeNodesum(struct TreeNode* root) {
+	if (root == NULL || (root->left == NULL && root->right == NULL))
+		return 0;
+	else 
+		return leafTreeNodesum(root->left) + leafTreeNodesum(root->right) + 1;
+}
+
+
+void PTreeNodeLevel_1(struct TreeNode* root,int val, int* res, int* returnSize) {
+	if (val == 1) {
+		res[(*returnSize)++] = root->val;
+		return;
+	}
+	if (root->left != NULL)
+		PTreeNodeLevel_1(root->left, val - 1, res, returnSize);
+	if (root->right != NULL)
+		PTreeNodeLevel_1(root->right, val - 1, res, returnSize);
+}
+
+int* PTreeNodeLevel(struct TreeNode* root, int val, int* returnSize) {
+	*returnSize = 0;
+	int* res = (int*)malloc(sizeof(int) * 100);
+	PTreeNodeLevel_1(root, val, res, returnSize);
+	return res;
+}
+
+int TreeNodesum(struct TreeNode* root) {
+	if (root == NULL)
+		return 0;
+	else {
+		return TreeNodesum(root->left) + TreeNodesum(root->right) + 1;
+	}
+}
+
+int LTsum(struct TreeNode* root) {
+	if (root == NULL)
+		return 0;
+	if (root->left == NULL && root->right == NULL)
+		return 1;
+	int numLeft = LTsum(root->left);
+	int numRight = LTsum(root->right);
+	return (numLeft + numRight);
+}
+
+int deepTree(struct TreeNode* root) {
+	if (root == NULL) return 0;
+	return fmax(deepTree(root->left), deepTree(root->right)) + 1;
+	
+}
+
+void Tree_six(struct TreeNode* root) {
+	int i = 1;
+	int n = 0;
+	int size = deepTree(root);
+	for (int i = 1; i <= size; i++) {
+		printf("µÚ%d²ã", i);
+		Printarray(PTreeNodeLevel(root, i, &n), n);
+		printf("\n");
+	}
+	
+}
+
+int Tree_three(struct TreeNode* root) {
+	if (!root)
+		return 0;
+	else if (root->left && root->right)
+		return Tree_three(root->left) + Tree_three(root->right) + 1;
+	else
+		return Tree_three(root->left) + Tree_three(root->right);
 }

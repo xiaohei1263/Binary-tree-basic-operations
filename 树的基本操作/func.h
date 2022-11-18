@@ -7,33 +7,63 @@ typedef struct TreeNode {
 
 }TreeNode;
 
-TreeNode* CreateLink();//åˆ›å»º
+TreeNode* CreateLink();//´´½¨
 
-//å‰åºéé€’å½’è¾“å‡ºï¼šè¿”å›æ•°ç»„
+//Ç°Ğò·Çµİ¹éÊä³ö£º·µ»ØÊı×é
 int* preorderTraversal(struct TreeNode* root, int* returnSize);
-//å‰åºé€’å½’
+
+//Ç°Ğòµİ¹é
 void inorder_1(struct TreeNode* root, int* res, int* returnSize);
-//å‰åºé€’å½’
+//Ç°Ğòµİ¹é
 int* preorderTraversal_1(struct TreeNode* root, int* returnSize); 
 
-//ä¸­åºéé€’å½’è¾“å‡ºï¼šè¿”å›æ•°ç»„
+
+//ÖĞĞò·Çµİ¹éÊä³ö£º·µ»ØÊı×é
 int* inorderTraversal(struct TreeNode* root, int* returnSize);
-//ä¸­åºé€’å½’
+
+//ÖĞĞòµİ¹é
 void inorder_2(struct TreeNode* root, int* res, int* resSize); 
-//ä¸­åºé€’å½’
+//ÖĞĞòµİ¹é
 int* inorderTraversal_1(struct TreeNode* root, int* returnSize); 
 
-//ååºéé€’å½’è¾“å‡ºï¼šè¿”å›æ•°ç»„
+
+//ºóĞò·Çµİ¹éÊä³ö£º·µ»ØÊı×é
 int* postorderTraversal(struct TreeNode* root, int* returnSize); 
-//ååºé€’å½’
+
+//ºóĞòµİ¹é
 void inorder_3(struct TreeNode* root, int* res, int* returnSize); 
-//ååºé€’å½’
+//ºóĞòµİ¹é
 int* postorderTraversal_1(struct TreeNode* root, int* returnSize);
 
-//å±‚åºéé€’å½’
+
+//²ãĞò·Çµİ¹é
 int* layerorderTraversal(struct TreeNode* root, int* returnSize);
-//å‰ä¸­åºéå†ç»“æœè¾“å‡ºäºŒå‰æ ‘
+
+//Ç°ÖĞĞò±éÀú½á¹ûÊä³ö¶ş²æÊ÷
 struct TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int inorderSize);
+
+//1. ¶ş²æÊ÷TµÄ·ÇÒ¶×Ó½áµã¸öÊı
+int leafTreeNodesum(struct TreeNode* root);
+
+//2. ÈçºÎ´òÓ¡Êä³ö¶ş²æÊ÷µÚ3²ã½áµã(¼ÙÉèÊ÷¸ùÎªµÚ1²ã)
+int* PTreeNodeLevel(struct TreeNode* root, int val, int* returnSize);
+void PTreeNodeLevel_1(struct TreeNode* root, int val, int* res, int* returnSize);
+
+//3. Çó¶ş²æÊ÷ÖĞ¶ÈÎª2µÄ½áµãµÄ¸öÊı
+
+int Tree_three(struct TreeNode* root);
+
+//  4. Çó¶ş²æÊ÷ÖĞ½áµã×ÜÊı
+int TreeNodesum(struct TreeNode* root);
+
+// 5. Çó¶ş²æÊ÷ÖĞÒ¶×Ó½áµã×ÜÊı
+int LTsum(struct TreeNode* root);
+
+//6. ±éÀú¶ş²æÊ÷Ê±ÏÔÊ¾Ã¿¸ö½áµãµÄ²ãºÅ
+void Tree_six(struct TreeNode* root);
+
+// 7. Çó¶ş²æÊ÷µÄÉî¶È¡£
+int deepTree(struct TreeNode* root);
 
 void Output(struct TreeNode* S);
 void Printarray(int* nums, int numsSize);

@@ -130,7 +130,7 @@
     <ClCompile Include="源.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Tou.h" />
+    <ClInclude Include="func.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
